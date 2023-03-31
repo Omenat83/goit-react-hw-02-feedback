@@ -2,8 +2,7 @@ import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types'
 import { Container, Button } from './FeedbackOptions.styled';
 
-export const FeedbackOptions = ({ options , onLeaveFeedback}) => {
-  const btnKeys = Object.keys(options);
+export const FeedbackOptions = ({ btnKeys, onLeaveFeedback }) => {
 
   return (
     <Container>
@@ -11,7 +10,7 @@ export const FeedbackOptions = ({ options , onLeaveFeedback}) => {
         return (
           <Button
             key={nanoid()}
-            onClick={(event) => onLeaveFeedback(event.target.textContent)}
+            onClick={event => onLeaveFeedback(event.target.textContent)}
           >
             {btn}
           </Button>
@@ -22,10 +21,6 @@ export const FeedbackOptions = ({ options , onLeaveFeedback}) => {
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.shape({
-    good: PropTypes.number.isRequired,
-    neutral: PropTypes.number.isRequired,
-    bad: PropTypes.number.isRequired,
-  }),
+  btnKeys: PropTypes.array.isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
-}
+};
